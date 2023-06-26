@@ -1,0 +1,11 @@
+// Les variables permettent de sauvegarder des données
+// Utile pour les éléments qui ont lieu à la charte graphique par exemple
+// Ou tout ce qui pourrait se répéter et que l'on souhaiterais modifier en même temps
+$main-color: #3d6bc6;
+$main-color-dark: darken($main-color, 10%);
+$main-color-darker: darken($main-color, 20%);
+$main-color-light: lighten($main-color, 10%);
+$main-color-lighter: lighten($main-color, 20%);
+$font-size: #333;
+$border-radius: 5px;
+$padding: 10px 20px;
