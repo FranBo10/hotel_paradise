@@ -5,41 +5,44 @@
 
 
 {% block body %}
-<body>
-	<section class="services">
-		<h2 id="services">Nos services</h2>
-		<div class="cards">
-			<div class="card">
-				<img src="assets/img/chambre (8).jpg" alt="chambres" class="mb-3"/>
-				<div style="height: 200px; color: #fff">
-					<h3 class="text-center text-white">Chambres</h3>
-					<p>
-						Venez découvrir nos chambres pour votre plus grand confort
-					</p>
+	<body>
+		<section class="services">
+			<h2 id="services">Nos services</h2>
+			<div class="cards">
+				<div class="card">
+					<img src="assets/img/chambre (8).jpg" alt="chambres" class="mb-3"/>
+					<div style="height: 200px; color: #fff">
+						<h3 class="text-center text-white">Chambres</h3>
+						<p>
+							Venez découvrir nos chambres pour votre plus grand confort
+						</p>
+					</div>
+					<a href="{{ path('show') }}" class="button-card">Découvrir les chambres</a>
 				</div>
-				<a href="" class="button-card">Découvrir les chambres</a>
-			</div>
-			<div class="card">
-				<img src="{{ asset('assets/img/resto1.jpg') }}" alt="restaurant" class="mb-3"/>
-				<div style="height: 200px; color: #fff">
-					<h3 class="text-center text-white">Restaurant</h3>
-					<p>
-						Nos plats sont confectionnés à la minute par notre chef cuisinier chaque jour
-					</p>
+				<div class="card">
+					<img src="{{ asset('assets/img/resto1.jpg') }}" alt="restaurant" class="mb-3"/>
+					<div style="height: 200px; color: #fff">
+						<h3 class="text-center text-white">Restaurant</h3>
+						<p>
+							Nos plats sont confectionnés à la minute par notre chef cuisinier chaque jour
+						</p>
+					</div>
+					<a href="{{ path('app_resto') }}" class="button-card">Visiter le restaurant</a>
 				</div>
-				<a href="" class="button-card">Visiter le restaurant</a>
-			</div>
-			<div class="card">
-				<img src="assets/img/spa1.jpg" alt="chambres" class="mb-3"/>
-				<div style="height: 200px; color: #fff">
-					<h3 class="text-center text-white">Spa</h3>
-					<p>
-						Détendez-vous et offrez-vous un massage dont vous vous rappellerez longtemps
-					</p>
+				<div class="card">
+					<img src="assets/img/spa1.jpg" alt="chambres" class="mb-3"/>
+					<div style="height: 200px; color: #fff">
+						<h3 class="text-center text-white">Spa</h3>
+						<p>
+							Détendez-vous et offrez-vous un massage dont vous vous rappellerez longtemps
+						</p>
+					</div>
+					<a href={{ path('app_spa') }} "" class="button-card">Prenez soin de vous</a>
 				</div>
-				<a href="" class="button-card">Prenez soin de vous</a>
 			</div>
-		</div>
-	</section>
-</body>{% endblock %}{% block footer %}
-<footer></footer>{% endblock %}
+		</section>
+	</body>
+{% endblock %}
+{% block footer %}
+	<footer></footer>
+{% endblock %}

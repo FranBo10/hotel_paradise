@@ -164,82 +164,6 @@ header .buttons {
   background-color: #42aab5;
 }
 
-/* .hero {
-  padding: 2rem;
-  height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent),
-    url(../img/hotel-3000.jpg);
-  background-size: cover;
-  background-position: bottom;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  text-align: center;
-  font-size: clamp(25px, 6vw, 60px);
-}
-.hero h1 {
-  color: #fff;
-}
-
-.hero-resto {
-  padding: 2rem;
-  height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent),
-    url(../img/resto.jpg);
-  background-size: cover;
-  background-position: bottom;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  text-align: center;
-  font-size: clamp(25px, 6vw, 60px);
-}
-.hero-resto h1 {
-  color: #fff;
-}
-
-.hero-spa {
-  padding: 2rem;
-  height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent),
-    url(../img/spa.jpg);
-  background-size: cover;
-  background-position: bottom;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  text-align: center;
-  font-size: clamp(25px, 6vw, 60px);
-}
-.hero-spa h1 {
-  color: #fff;
-}
-
-.hero-avis {
-  padding: 2rem;
-  height: 500px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent),
-    url(../img/avis.jpg);
-  background-size: cover;
-  background-position: bottom;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  text-align: center;
-  font-size: clamp(25px, 6vw, 60px);
-}
-.hero-avis h1 {
-  color: #fff;
-} */
-
 .services {
   padding: 4rem 2rem;
   min-height: 100vh;
@@ -300,7 +224,6 @@ header .buttons {
 }
 
 
-
 .cards {
   display: flex;
   justify-content: center;
@@ -319,7 +242,7 @@ header .buttons {
   justify-content: space-between;
   border-radius: 20px;
   gap: 1rem;
-  background-color: #3d6bc6;
+  background-color: gold;
 }
 .card img {
   width: 10rem;
