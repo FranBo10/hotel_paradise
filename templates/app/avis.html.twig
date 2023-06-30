@@ -1,0 +1,127 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Avis
+{% endblock %}
+{% block body %}
+	<section class="services">
+		<h2 class="text-center">On est heureux de vous montrer les opinions de nos clients</h2>
+		<div class="container">
+			<h2>
+				<span class="text-warning">9.3</span>
+				<span class="text-sm">/10</span>
+			</h2>
+			<div class="flex mx-auto">
+				<div class="flex-column">
+					<h3>Excelente</h3>
+					<p>Basé sur 58 renseignements</p>
+				</div>
+				<div class="about skills">
+					<div class="box">
+						<h4>Nettoyage</h4>
+						<div class="percent">
+							<div class="progress" style="width: 90%"></div>
+						</div>
+					</div>
+					<div class="box">
+						<h4>Attention personnel</h4>
+						<div class="percent">
+							<div class="progress" style="width: 80%"></div>
+						</div>
+					</div>
+					<div class="box">
+						<h4>Confort des chambres</h4>
+						<div class="percent">
+							<div class="progress" style="width: 70%"></div>
+						</div>
+					</div>
+					<div class="box">
+						<h4>Localisation</h4>
+						<div class="percent">
+							<div class="progress" style="width: 60%"></div>
+						</div>
+					</div>
+					<div class="box">
+						<h4>Instalations de l'hôtel</h4>
+						<div class="percent">
+							<div class="progress" style="width: 70%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="container my-3">
+			{{ form_start(commentForm) }}
+
+			{{ form_row(commentForm.categorie, {
+                'label': 'Donnez votre avis',
+                'label_attr': {
+                    'class': 'text-dark small',
+                    'style': 'text-align: left;'
+                }
+            }) }}
+
+			{{ form_row(commentForm.content, {
+                'label': 'Content',
+                'label_attr': {
+                    'class': 'text-dark small',
+                    'style': 'text-align: left;'
+                },
+                'attr': {
+                    'rows': 5
+                }
+            }) }}
+
+			<button type='submit' class="btn btn-warning text-black">Envoyer le commentaire</button>
+
+			{{ form_end(commentForm) }}
+		</div>
+
+
+		<h2 class="text-center">Commentaires</h2>
+		<div class="container">
+			<form method="GET" action="{{ path('app_avis') }}" class="mb-3">
+				<div class="form-group">
+					<label for="categoryFilter">Filtrer par catégorie :</label>
+					<select id="categoryFilter" name="categorie" class="form-control">
+						<option value="">Toutes</option>
+						<option value="chambre" {% if selectedCategorie == 'chambre' %} selected {% endif %}>Chambres</option>
+						<option value="restaurant" {% if selectedCategorie == 'restaurant' %} selected {% endif %}>Restaurant</option>
+						<option value="spa" {% if selectedCategorie == 'spa' %} selected {% endif %}>Spa</option>
+					</select>
+					<button type="submit" class="btn btn-warning text-black mt-2">Filtrer</button>
+				</div>
+			</form>
+			<section>
+				<table class="table table-light">
+					<thead>
+						<tr class="text-center">
+							<th class="col-md-3">User/Time</th>
+							<th class="col-md-7">Comments</th>
+							<th class="col-md-2">Categorie</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for comment in comments %}
+							<tr>
+								<td>
+									Votre commentaire
+									<br>
+									<small>{{ comment.createdAt|date('d/m/Y à H:i:s') }}</small>
+								</td>
+								<td>{{ comment.content }}</td>
+								<td>{{ comment.categorie }}</td>
+								{# <td class="text-center">
+																																																																																																													<a href="" class="btn btn-warning">modifier</a>
+																																																																																																												</td> #}
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+
+			</section>
+		</div>
+	</section>
+{% endblock %}

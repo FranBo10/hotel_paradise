@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-5">
+
+		{% for item in chambres %}
+			<div class="row my-5">
+				<div class="col-md-6">
+					<div class="d-flex align-items-center">
+						<div class="flex-col justify-content-between">
+							<h2>{{item.titre|title}}</h2>
+							<p>{{item.descriptionCourte}}</p>
+							<div class="mt-3">
+								<a href="{{path('show_one', {id: item.id})}}" class="button">Voir plus en détail...</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="{{asset('assets/img/'~ item.photo)}}" alt="{{item.titre}}" width="400" height="200">
+				</div>
+			</div>
+
+
+		{% endfor %}
+	</div>
+{% endblock %}

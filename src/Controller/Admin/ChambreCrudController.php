@@ -26,9 +26,9 @@ class ChambreCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             ChoiceField::new('titre', 'Titre')->setChoices([
-                'Chambre Classique' => '1',
-                'Chambre Confort' => '2',
-                'Chambre Suite' => '3'
+                'Chambre Classique' => 'Chambre Classique',
+                'Chambre Confort' => 'Chambre Confort',
+                'Chambre Suite' => 'Chambre Suite'
             ]),
             TextField::new('description_courte', 'Description (Courte)'),
             TextEditorField::new('description_longue', 'Description (Longue)'),
@@ -44,5 +44,9 @@ class ChambreCrudController extends AbstractCrudController
         $chambre->setDateEnregistrement(new Datetime);
         return $chambre;
     }
+
+    
+
+    
     
 }

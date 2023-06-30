@@ -1,0 +1,1 @@
+const modalArticulo = new bootstrap.Modal(document.getElementById('modalArticulo'))

@@ -2,16 +2,154 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use DateTime;
+use App\Entity\Membre;
+use App\Entity\Chambre;
+use App\Entity\Comment;
+use App\Entity\Commande;
+use App\Form\CommentType;
+use App\Form\CommandeType;
+use App\Repository\SliderRepository;
+use App\Repository\ChambreRepository;
+use App\Repository\CommentRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AppController extends AbstractController
 {
-    #[Route('/app', name: 'home')]
-    public function index(): Response
+    #[Route('/', name: 'home')]
+    public function index(SliderRepository $repo): Response
     {
+        $slider = $repo->findAll();
+        // dd($slider);
 
-        return $this->render('app/index.html.twig');
+        return $this->render('app/index.html.twig', [
+            'slider' => $slider
+        ]);
     }
+
+    #[Route('/app/show', name:'show')]
+    public function show(ChambreRepository $repo, sliderRepository $slideRepo) {
+        $chambres = $repo->findAll();
+        $sliders = $slideRepo->findBy(['page' => 'chambre']);
+    
+        return $this->render('app/chambre.html.twig', [
+            'chambres' => $chambres,
+            'slider' => $sliders
+
+        ]);
+    }
+
+    #[Route('/app/show/{id}', name:'show_one')]
+    public function showOne(Chambre $chambre, EntityManagerInterface $manager, Request $request) {
+
+        
+        $commande = new commande;
+        
+
+        $form = $this->createForm(CommandeType::class, $commande);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $dateArrivee = $commande->getDateArrivee();
+            $dateDepart = $commande->getDateDepart();
+            $prix = $chambre->getPrixJournalier();
+
+        if ($dateArrivee !== null && $dateDepart !== null  ) {
+            $diff = $dateDepart->diff($dateArrivee);
+            $days = $diff->days;
+            $prixTotal = $days * $prix;
+        } else {
+            $prixTotal = 0; 
+        }
+            $commande->setDateEnregistrement(new DateTime)
+                    ->setPrixTotal($prixTotal)
+                    ->setChambre($chambre);
+                    $manager->persist($commande);
+            $manager->flush();
+            $this->addFlash('success', 'Commande enregistré');
+            
+            return $this->redirectToRoute('home');
+        }
+
+
+
+        return $this->render('app/show.html.twig', [
+            'chambre' => $chambre,
+            'form' => $form->createView()
+        ]);
+
+    }
+
+    #[Route('app/restaurant', name:'app_resto')]
+    public function restaurant(sliderRepository $repo) {
+
+        $sliders = $repo->findBy(['page' => 'restaurant']);
+
+        return $this->render('app/restaurant.html.twig', [
+            'slider' => $sliders
+        ]);
+    }
+
+    #[Route('app/spa', name:'app_spa')]
+    public function spa(sliderRepository $repo) {
+
+        $sliders = $repo->findBy(['page' => 'spa']);
+
+
+        return $this->render('app/spa.html.twig', [
+            'slider' => $sliders
+        ]);
+    }
+
+    #[Route('app/avis', name:'app_avis')]
+    public function avis(EntityManagerInterface $manager, Request $request, CommentRepository $repo, sliderRepository $slideRepo) {
+        $sliders = $slideRepo->findBy(['page' => 'avis']);
+        $categorie = $request->query->get('categorie');
+        $comments = [];
+    
+        switch ($categorie) {
+            case 'chambre':
+                $comments = $repo->findBy(['categorie' => 'chambre'], ['createdAt' => 'DESC']);
+                break;
+            case 'restaurant':
+                $comments = $repo->findBy(['categorie' => 'restaurant'], ['createdAt' => 'DESC']);
+                break;
+            case 'spa':
+                $comments = $repo->findBy(['categorie' => 'spa'], ['createdAt' => 'DESC']);
+                break;
+            default:
+                $comments = $repo->findBy([], ['createdAt' => 'DESC']);
+                break;
+        }
+    
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+    
+        if($form->isSubmitted() && $form->isValid()) {
+            $comment->setCreatedAt(new \DateTime);
+            $manager->persist($comment);
+            $manager->flush();
+        }
+    
+        return $this->render('app/avis.html.twig', [
+            'commentForm' => $form->createView(),
+            'comment' => $comment,
+            'comments' => $comments,
+            'selectedCategorie' => $categorie,
+            'slider' => $sliders
+        ]);
+    }
+
+    #[Route('app/contact', name:'contact')]
+    public function contact() {
+
+        return $this->render('app/contact.html.twig');
+    }
+    
+    
 }

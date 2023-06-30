@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant
+{% endblock %}
+{% block carousel %}{% endblock %}
+
+{% block body %}
+	<div class="image-container">
+		<img src="{{ asset('assets/img/web.png') }}" class="d-block w-100" alt="...">
+		<div class="carousel-caption">
+			<h1>Hôtel Paradise, comme à la maison!</h1>
+			<a href="#services" class="button">Donnez votre avis</a>
+
+		</div>
+	</div>
+	<div class="services">
+		<div class="col-lg-8 col-12 mx-auto">
+        <h2 id="services" class="text-center">Contactez-nous</h2>
+			<form>
+				<div class="py-2">
+					<div class="col-md-12">
+						<label class="text-dark text-uppercase">
+							Name
+						</label>
+						<input class="form-control" type="text">
+					</div>
+				</div>
+				<div class="py-2">
+					<div class="col-md-12">
+						<label class="text-dark text-uppercase">
+							Téléphone
+						</label>
+						<input class="form-control" type="text">
+					</div>
+				</div>
+				<div class="py-2">
+					<div class="col-md-12">
+						<label class="text-dark text-uppercase">
+							Email
+						</label>
+						<input class="form-control" type="email">
+					</div>
+				</div>
+				<div class="py-2">
+					<div class="col-md-12">
+						<label class="text-dark text-uppercase">
+							Subject
+						</label>
+						<input class="form-control" type="text">
+					</div>
+				</div>
+				<div class="py-2">
+					<div class="col-md-12">
+						<label class="text-dark text-uppercase">
+							Message
+						</label>
+						<textarea class="form-control" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="text-center">
+						<button class="btn btn-primary rounded-md w-2/3 mt-4">
+							Envoyer
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+</div>{% endblock %}

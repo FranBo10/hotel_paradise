@@ -3,49 +3,43 @@
 {% block title %}Index
 {% endblock %}
 
+
 {% block body %}
-	<body>
-
-		<main>
-			<section class="hero">
-				<h1 style="font-size: 4.5rem">
-					Hôtel Paradise,
-					<br/>
-					comme à la maison!
-				</h1>
-				<a href="#" class="button">Découvrez-nos chambres</a>
-			</section>
-			<section class="services">
-				<h2>Nos services</h2>
-				<div class="cards">
-					<div class="card">
-						<img src="assets/img/room-640.jpg" alt="chambres"/>
-						<h3>Chambres</h3>
-						<p>
-							Venez decouvrir nos chambres pour votre plus grand confort
-						</p>
-						<a href="" class="button">Découvrir les chambres</a>
-					</div>
-					<div class="card">
-						<img src="assets/img/room-640.jpg" alt="chambres"/>
-						<h3>Restaurant</h3>
-						<p>
-							Nos plats sont confectionées à la minute pour notre chef cuisinier chaque jour
-						</p>
-						<a href="" class="button">Voir la carte</a>
-					</div>
-					<div class="card">
-						<img src="assets/img/room-640.jpg" alt="chambres"/>
-						<h3>Spa</h3>
-						<p>
-							Détendez-vous et offrez-vous un massage dont vous vous rappellerez longtemps
-						</p>
-						<a href="" class="button">Les soins</a>
-					</div>
+<body>
+	<section class="services">
+		<h2 id="services">Nos services</h2>
+		<div class="cards">
+			<div class="card">
+				<img src="assets/img/chambre (8).jpg" alt="chambres" class="mb-3"/>
+				<div style="height: 200px; color: #fff">
+					<h3 class="text-center text-white">Chambres</h3>
+					<p>
+						Venez découvrir nos chambres pour votre plus grand confort
+					</p>
 				</div>
-			</section>
-		</main>
-
-		<footer></footer>
-	</body>
-{% endblock %}
+				<a href="" class="button-card">Découvrir les chambres</a>
+			</div>
+			<div class="card">
+				<img src="{{ asset('assets/img/resto1.jpg') }}" alt="restaurant" class="mb-3"/>
+				<div style="height: 200px; color: #fff">
+					<h3 class="text-center text-white">Restaurant</h3>
+					<p>
+						Nos plats sont confectionnés à la minute par notre chef cuisinier chaque jour
+					</p>
+				</div>
+				<a href="" class="button-card">Visiter le restaurant</a>
+			</div>
+			<div class="card">
+				<img src="assets/img/spa1.jpg" alt="chambres" class="mb-3"/>
+				<div style="height: 200px; color: #fff">
+					<h3 class="text-center text-white">Spa</h3>
+					<p>
+						Détendez-vous et offrez-vous un massage dont vous vous rappellerez longtemps
+					</p>
+				</div>
+				<a href="" class="button-card">Prenez soin de vous</a>
+			</div>
+		</div>
+	</section>
+</body>{% endblock %}{% block footer %}
+<footer></footer>{% endblock %}

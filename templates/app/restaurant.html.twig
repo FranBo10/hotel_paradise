@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant
+{% endblock %}
+{% block header %}{% endblock %}
+{% block body %}
+	<body>
+		<section class="services">
+			<h2 id="services">Le Restaurant</h2>
+			<div class="cards">
+				<div class="card">
+					<img src="{{asset('assets/img/resto1.jpg')}}" alt="chambres" class="mb-3"/>
+					<div style="height: 200px; color: #fff">
+						<h3 class="text-center text-white">Carte Petit-déjeuner</h3>
+						<p>
+							Le paradis des amateurs de viandes : savourez les meilleurs morceaux dans notre restaurant brasserie exquis !
+						</p>
+					</div>
+					<button type="button" class="btn btn-warning text-black" data-bs-toggle="modal" data-bs-target="#cartePetitDejModal">
+						Découvrez la carte
+					</button>
+				</div>
+				<div class="card">
+					<img src="{{asset('assets/img/resto2.jpg')}}" alt="chambres" class="mb-3"/>
+					<div style="height: 200px; color: #fff">
+						<h3 class="text-center text-white">Carte Dégustation</h3>
+						<p>
+							Découvrez une symphonie de saveurs avec notre menu dégustation, une expérience culinaire aux multiples délices
+						</p>
+					</div>
+					<button type="button" class="btn btn-warning text-black" data-bs-toggle="modal" data-bs-target="#carteDegustationModal">
+						Découvrez la carte
+					</button>
+				</div>
+				<div class="card">
+					<img src="{{asset('assets/img/resto.jpg')}}" alt="chambres" class="mb-3"/>
+					<div style="height: 200px; color: #fff">
+						<h3 class="text-center text-white">Carte Restaurant</h3>
+						<p>
+							Nos plats sont confectionnés à la minute par notre chef cuisinier chaque jour
+						</p>
+					</div>
+					<button type="button" class="btn btn-warning text-black" data-bs-toggle="modal" data-bs-target="#carteRestaurantModal">
+						Découvrez la carte
+					</button>
+				</div>
+			</div>
+
+			<div class="modal fade" id="cartePetitDejModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cartePetitDejModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header bg-warning text-white">
+							<h5 class="modal-title" id="cartePetitDejModalLabel">Carte Petit-Déjeuner</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="container">
+								<h3 class="text-center">Entrées</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Croissant Royale</li>
+									<li>Omelette du Chef</li>
+									<li>Pain perdu à la vanille</li>
+								</ul>
+								<h3 class="text-center">Plats Principaux</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Assiette de fruits frais</li>
+									<li>Pancakes aux myrtilles</li>
+									<li>Porridge à la cannelle</li>
+								</ul>
+								<h3 class="text-center">Desserts</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Smoothie tropical</li>
+									<li>Yaourt aux fruits et granola</li>
+									<li>Assortiment de viennoiseries</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="carteDegustationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carteDegustationModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header bg-warning text-white">
+							<h5 class="modal-title" id="carteDegustationModalLabel">Carte Degustation</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="container">
+								<h3 class="text-center">Entrées</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Tartare de saumon à l'aneth</li>
+									<li>Carpaccio de bœuf aux copeaux de parmesan</li>
+									<li>Risotto crémeux aux champignons sauvages</li>
+								</ul>
+								<h3 class="text-center">Plats Principaux</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Médaillons de lotte sauce safranée</li>
+									<li>Magret de canard au miel et aux agrumes</li>
+									<li>Filet de bœuf Rossini</li>
+								</ul>
+								<h3 class="text-center">Desserts</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Ravioles aux truffes</li>
+									<li>Crevettes grillées à l'ail et au persil</li>
+									<li>Assiette de fromages affinés</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="carteRestaurantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carteRestaurantModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable">
+					<div class="modal-content">
+						<div class="modal-header bg-warning text-white">
+							<h5 class="modal-title" id="carteRestaurantModalLabel">Carte Restaurant</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="container">
+								<h3 class="text-center">Entrées</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Escargots à la bourguignonne</li>
+									<li>Bouillabaisse marseillaise</li>
+									<li>Choucroute alsacienne</li>
+								</ul>
+								<h3 class="text-center">Plats Principaux</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Cassoulet toulousain</li>
+									<li>Steak-frites sauce béarnaise</li>
+									<li>Moules marinières</li>
+								</ul>
+								<h3 class="text-center">Desserts</h3>
+								<hr>
+								<ul class="list-unstyled">
+									<li>Confit de canard avec pommes de terre sautées</li>
+									<li>Tarte flambée aux lardons et oignons</li>
+									<li>Crème brûlée à la lavande</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+	</body>
+</div></div><div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button></div></div></div></body></section><footer></footer></body>{% endblock %}

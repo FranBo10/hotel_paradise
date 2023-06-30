@@ -23,6 +23,9 @@ class Slider
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_enregistrement = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $page = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Slider
     public function setDateEnregistrement(\DateTimeInterface $date_enregistrement): static
     {
         $this->date_enregistrement = $date_enregistrement;
+
+        return $this;
+    }
+
+    public function getPage(): ?string
+    {
+        return $this->page;
+    }
+
+    public function setPage(?string $page): static
+    {
+        $this->page = $page;
 
         return $this;
     }
