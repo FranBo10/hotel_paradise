@@ -1,314 +1,344 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/pulse/bootstrap.min.css" integrity="sha512-uVYwYyXOAvo+4R3AGZfqzzGksUsdsegIgjYa5rsUrN+lDZq+PX3U8ofMm5zRl1gRMz0br7miqUOELmg7/dpuAA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"> {% block stylesheets %}{% endblock %}{% block javascripts %}{% endblock %}
-		</head>
-		<header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome! {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/pulse/bootstrap.min.css"
+      integrity="sha512-uVYwYyXOAvo+4R3AGZfqzzGksUsdsegIgjYa5rsUrN+lDZq+PX3U8ofMm5zRl1gRMz0br7miqUOELmg7/dpuAA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    {% block stylesheets %}{% endblock %}{% block javascripts %}{% endblock %}
+  </head>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="{{ path('home') }}"
+          >Hôtel Paradise</a
+        >
 
-			<nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
-				<div class="container-fluid">
-					<a class="navbar-brand logo" href="#">Hôtel Paradise</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarColor03">
-						<div class="ms-3">
-							<ul class="navbar-nav">
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('home') }}">Home</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('show') }}">Chambre</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_resto') }}">Restaurant</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_spa') }}">Spa</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Réservation</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_avis') }}">Avis</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">L'hôtel</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Actualités</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('contact') }}">Contact</a>
-								</li>
-							</ul>
-						</div>
-						<div class="flags">
-							<img src="{{ asset('assets/img/france.png') }}" alt="fr">
-							<img src="{{ asset('assets/img/united-kingdom.png') }}" alt="en">
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-		{% block carousel %}
-			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-				<div class="carousel-indicators">
-					{% for slide in slider %}
-						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %} class="active" aria-current="true" {% endif %} aria-label="Slide {{ loop.index }}"></button>
-					{% endfor %}
-				</div>
-				<div class="carousel-inner">
-					{% for slide in slider %}
-						<div class="carousel-item text-image {% if loop.first %}active{% endif %}">
-							<div class="image-container">
-								<img src="{{ asset('assets/img/' ~ slide.photo) }}" class="d-block w-100" alt="...">
-								<div class="carousel-caption">
-									{% if slide.page == "Avis" %}
-										<h1>Hôtel Paradise, votre avis est précieux!</h1>
-										<a href="#services" class="button">Donnez votre avis</a>
-									{% elseif slide.page == "Chambre" %}
-										<h1>Le refuge ultime pour votre confort et votre tranquillité</h1>
-										<a href="#services" class="button">Découvrez nos chambres</a>
-									{% elseif slide.page == "Restaurant" %}
-										<h1>Hôtel Paradise, votre avis est précieux!</h1>
-										<a href="#services" class="button">Découvrez notre restaurant</a>
-									{% elseif slide.page == "Spa" %}
-										<h1>Hôtel Paradise, votre avis est précieux!</h1>
-										<a href="#services" class="button">Découvrez notre Spa</a>
-									{% endif %}
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-				</div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor03"
+          aria-controls="navbarColor03"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="flags-active">
+          <img src="{{ asset('assets/img/france.png') }}" alt="fr" />
+          <img src="{{ asset('assets/img/united-kingdom.png') }}" alt="en" />
+        </div>
+        <div class="collapse navbar-collapse ms-3" id="navbarColor03">
+          <div class="menu-nav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('home') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('show') }}">Chambre</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_resto') }}"
+                  >Restaurant</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_spa') }}">Spa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Réservation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_avis') }}">Avis</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_hotel') }}">L'hôtel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Actualités</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="flags">
+          <img src="{{ asset('assets/img/france.png') }}" alt="fr" />
+          <img src="{{ asset('assets/img/united-kingdom.png') }}" alt="en" />
+        </div>
+      </div>
+    </nav>
 
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
-			</div>
-		{% endblock %}
-	</html>
-</header>
-<body>
-	{% block body %}{% endblock %}
-	<script src="main.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    {% block carousel %}
 
-</body>
-<footer>
-	<!-- Remove the container if you want to extend the Footer to full width. -->
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        {% for slide in slider %}
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="{{ loop.index0 }}"
+          {%
+          if
+          loop.first
+          %}
+          class="active"
+          aria-current="true"
+          {%
+          endif
+          %}
+          aria-label="Slide {{ loop.index }}"
+        ></button>
+        {% endfor %}
+      </div>
+      <div class="carousel-inner">
+        {% for slide in slider %}
+        <div
+          class="carousel-item text-image {% if loop.first %}active{% endif %}"
+        >
+          <div class="image-container">
+            <img
+              src="{{ asset('assets/img/' ~ slide.photo) }}"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption">
+              {% if slide.page == "Avis" %}
+              <h1>Votre avis est précieux!</h1>
+              <a href="#services" class="button">Donnez votre avis</a>
+              {% elseif slide.page == "Chambre" %}
+              <h1>Le refuge ultime pour votre confort et votre tranquillité</h1>
+              <a href="#services" class="button">Découvrez nos chambres</a>
+              {% elseif slide.page == "Restaurant" %}
+              <h1>
+                Savourez l'expérience culinaire exceptionnelle de notre
+                restaurant
+              </h1>
+              <a href="#services" class="button">Découvrez notre restaurant</a>
+              {% elseif slide.page == "Spa" %}
+              <h1>Détendez-vous dans notre spa luxueux</h1>
+              <a href="#services" class="button">Découvrez notre Spa</a>
+              {% elseif slide.page == "Accueil" %}
+              <h1>Bienvenue au Paradis !!!</h1>
+              <a href="#services" class="button">Découvrez nos services</a>
+              {% elseif slide.page == "Contact" %}
+              <h1>Avez-vous une question ? !!!</h1>
+              <a href="#services" class="button">Démandez-nous</a>
+              {% elseif slide.page == "Hotel" %}
+              <h1>Decouvrez notre hotel !!!</h1>
+              <a href="#services" class="button">Bienvenue au voyage !</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    {% endblock %}
+  </header>
+  <body>
+    {% block body %}{% endblock %}
+    <footer>
+      <footer class="footer text-center text-dark">
+        <div class="container p-4">
+          <section class="mb-4 fs-5">
+            <a
+              class="btn btn-icon btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a
+              class="btn btn-icon btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+
+            <a
+              class="btn btn-icon btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i class="fab fa-google"></i>
+            </a>
+
+            <a
+              class="btn btn-icon btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              class="btn btn-icon btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a
+              class="btn btn-icon btn-outline-light btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </section>
+
+          <section class="">
+            <form action="">
+              <div class="newsletter row d-flex justify-content-center">
+                <div class="col-auto">
+                  <p class="pt-2 fs-3">
+                    <strong>Sign up for our newsletter</strong>
+                  </p>
+                </div>
+                <div class="col-md-5 col-12">
+                  <div
+                    id="placeholder"
+                    class="form-outline form-white mb-4 mt-2"
+                  >
+                    <input
+                      id="placeholder"
+                      type="email"
+                      id="form5Example2"
+                      class="form-control"
+                      placeholder="Inserez votre email"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-auto">
+                  <button type="submit" class="button3 mb-2">Subscribe</button>
+                </div>
+              </div>
+            </form>
+          </section>
+          {#
+          <div class="form-container">
+            {{ form_start(mailForm) }}
+
+            {{ form_row(mailForm.email, {
+                  'label': 'E-Mail',
+                  'label_attr': {
+                      'class': 'text-dark',
+                      'style': 'text-align: left;'    
 
 
-	<!-- Footer -->
-		<footer
-		class="bg-warning text-center text-white"> <!-- Grid container -->
-		<div
-			class="container p-4">
-			<!-- Section: Social media -->
-			<section
-				class="mb-4">
-				<!-- Facebook -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-					<i class="fab fa-facebook-f"></i>
-				</a>
 
-				<!-- Twitter -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-					<i class="fab fa-twitter"></i>
-				</a>
 
-				<!-- Google -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-					<i class="fab fa-google"></i>
-				</a>
+            }}) }}
 
-				<!-- Instagram -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-					<i class="fab fa-instagram"></i>
-				</a>
+            <button type="submit" class="button col-12 text-black">
+              Subscrire
+            </button>
 
-				<!-- Linkedin -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-					<i class="fab fa-linkedin-in"></i>
-				</a>
+            {{ form_end(mailForm) }}
+          </div>
+          #}
 
-				<!-- Github -->
-				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-					<i class="fab fa-github"></i>
-				</a>
-			</section>
-			<!-- Section: Social media -->
+          <!-- Section: Text -->
+          <section>
+            <div class="container p-4 mx-4">
+              <div class="image">
+                <img src="{{ asset('assets/img/miami.jpg') }}" alt="hotel" />
+                <div class="adresse">
+                  <h1>Notre adresse</h1>
+                  <h2>7 Bld. Romuald Frederischk</h2>
+                  <h2>0251 Paradise Beach</h2>
+                  <h2>Miami (Florida)</h2>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
 
-			<!-- Section: Form -->
-			<section class="">
-				<form
-					action="">
-					<!--Grid row-->
-					<div
-						class="row d-flex justify-content-center">
-						<!--Grid column-->
-						<div class="col-auto">
-							<p class="pt-2">
-								<strong>Sign up for our newsletter</strong>
-							</p>
-						</div>
-						<!--Grid column-->
+        <!-- Copyright -->
+        <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)"
+        >
+          <div class="conditions d-flex justify-content-around">
+            <h2><a href="#">Conditions générales</a></h2>
+            <h2><a href="#">FAQ</a></h2>
+          </div>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
 
-						<!--Grid column-->
-						<div
-							class="col-md-5 col-12">
-							<!-- Email input -->
-							<div class="form-outline form-white mb-4">
-								<input type="email" id="form5Example2" class="form-control"/>
-								<label class="form-label" for="form5Example2">Email address</label>
-							</div>
-						</div>
-						<!--Grid column-->
+      <!-- End of .container -->
+    </footer>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 
-						<!--Grid column-->
-						<div
-							class="col-auto">
-							<!-- Submit button -->
-							<button type="submit" class="btn btn-outline-light mb-4">
-								Subscribe
-							</button>
-						</div>
-						<!--Grid column-->
-					</div>
-					<!--Grid row-->
-				</form>
-			</section>
-			<!-- Section: Form -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const nav = document.querySelector(".nav-link");
+        const navCollapse = document.querySelector(".navbar-collapse");
 
-			<!-- Section: Text -->
-			<section class="mb-4">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-																																					        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-																																					        eum harum corrupti dicta, aliquam sequi voluptate quas.
-				</p>
-			</section>
-			<!-- Section: Text -->
+        let isNavCollapsed = true;
 
-			<!-- Section: Links -->
-			<section
-				class="">
-				<!--Grid row-->
-				<div
-					class="row">
-					<!--Grid column-->
-					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">Links</h5>
-
-						<ul class="list-unstyled mb-0">
-							<li>
-								<a href="#!" class="text-white">Link 1</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 2</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 3</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 4</a>
-							</li>
-						</ul>
-					</div>
-					<!--Grid column-->
-
-					<!--Grid column-->
-					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">Links</h5>
-
-						<ul class="list-unstyled mb-0">
-							<li>
-								<a href="#!" class="text-white">Link 1</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 2</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 3</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 4</a>
-							</li>
-						</ul>
-					</div>
-					<!--Grid column-->
-
-					<!--Grid column-->
-					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">Links</h5>
-
-						<ul class="list-unstyled mb-0">
-							<li>
-								<a href="#!" class="text-white">Link 1</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 2</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 3</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 4</a>
-							</li>
-						</ul>
-					</div>
-					<!--Grid column-->
-
-					<!--Grid column-->
-					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">Links</h5>
-
-						<ul class="list-unstyled mb-0">
-							<li>
-								<a href="#!" class="text-white">Link 1</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 2</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 3</a>
-							</li>
-							<li>
-								<a href="#!" class="text-white">Link 4</a>
-							</li>
-						</ul>
-					</div>
-					<!--Grid column-->
-				</div>
-				<!--Grid row-->
-			</section>
-			<!-- Section: Links -->
-		</div>
-		<!-- Grid container -->
-
-		<!-- Copyright -->
-		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-			© 2020 Copyright:
-			<a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-		</div>
-		<!-- Copyright -->
-	</footer>
-	<!-- Footer -->
-
-	<!-- End of .container -->
-</footer></html>
+        nav.addEventListener("click", function () {
+          if (isNavCollapsed) {
+            navCollapse.classList.add("show");
+          } else {
+            navCollapse.classList.remove("show");
+          }
+          isNavCollapsed = !isNavCollapsed;
+        });
+      });
+    </script>
+  </body>
+</html>

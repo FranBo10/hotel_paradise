@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %} {% block title %}hotel {% endblock %} {% block
+body %}
+<section class="services">
+  <div class="container">
+    {% for item in hotel %}
+    <div class="row my-5">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center">
+          <div class="flex-col justify-content-between">
+            <h3>
+              Découvrez nos activités passionnantes pour rendre votre séjour
+              inoubliable !
+            </h3>
+            <p>
+              Profitez d'une multitude d'activités passionnantes lors de votre
+              séjour à notre hôtel. Que vous soyez à la recherche d'aventure, de
+              détente ou de divertissement, nous avons tout ce qu'il vous faut.
+              Plongez dans notre piscine à débordement donnant sur une vue
+              imprenable, offrant une oasis de calme et de rafraîchissement.
+              Rejoignez nos séances de yoga matinales pour commencer votre
+              journée en vous recentrant et en revitalisant votre corps et votre
+              esprit.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="{{asset('assets/img/'~ item.photo)}}"
+          alt="{photo"
+          width="500"
+          height="300"
+        />
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -6,8 +6,10 @@ use DateTime;
 use App\Entity\Membre;
 use App\Entity\Chambre;
 use App\Entity\Comment;
+use App\Entity\Contact;
 use App\Entity\Commande;
 use App\Form\CommentType;
+use App\Form\ContactType;
 use App\Form\CommandeType;
 use App\Repository\SliderRepository;
 use App\Repository\ChambreRepository;
@@ -17,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Loader\Configurator\form;
 
 class AppController extends AbstractController
 {
@@ -31,11 +34,12 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('/app/show', name:'show')]
-    public function show(ChambreRepository $repo, sliderRepository $slideRepo) {
+    #[Route('/app/show', name: 'show')]
+    public function show(ChambreRepository $repo, SliderRepository $slideRepo)
+    {
         $chambres = $repo->findAll();
         $sliders = $slideRepo->findBy(['page' => 'chambre']);
-    
+
         return $this->render('app/chambre.html.twig', [
             'chambres' => $chambres,
             'slider' => $sliders
@@ -43,35 +47,36 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('/app/show/{id}', name:'show_one')]
-    public function showOne(Chambre $chambre, EntityManagerInterface $manager, Request $request) {
+    #[Route('/app/show/{id}', name: 'show_one')]
+    public function showOne(Chambre $chambre, EntityManagerInterface $manager, Request $request, SliderRepository $slideRepo)
+    {
+        $sliders = $slideRepo->findBy(['page' => 'chambre']);
 
-        
         $commande = new commande;
-        
+
 
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $dateArrivee = $commande->getDateArrivee();
             $dateDepart = $commande->getDateDepart();
             $prix = $chambre->getPrixJournalier();
 
-        if ($dateArrivee !== null && $dateDepart !== null  ) {
-            $diff = $dateDepart->diff($dateArrivee);
-            $days = $diff->days;
-            $prixTotal = $days * $prix;
-        } else {
-            $prixTotal = 0; 
-        }
+            if ($dateArrivee !== null && $dateDepart !== null) {
+                $diff = $dateDepart->diff($dateArrivee);
+                $days = $diff->days;
+                $prixTotal = $days * $prix;
+            } else {
+                $prixTotal = 0;
+            }
             $commande->setDateEnregistrement(new DateTime)
-                    ->setPrixTotal($prixTotal)
-                    ->setChambre($chambre);
-                    $manager->persist($commande);
+                ->setPrixTotal($prixTotal)
+                ->setChambre($chambre);
+            $manager->persist($commande);
             $manager->flush();
             $this->addFlash('success', 'Commande enregistré');
-            
+
             return $this->redirectToRoute('home');
         }
 
@@ -79,13 +84,14 @@ class AppController extends AbstractController
 
         return $this->render('app/show.html.twig', [
             'chambre' => $chambre,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'slider' => $sliders
         ]);
-
     }
 
-    #[Route('app/restaurant', name:'app_resto')]
-    public function restaurant(sliderRepository $repo) {
+    #[Route('app/restaurant', name: 'app_resto')]
+    public function restaurant(sliderRepository $repo)
+    {
 
         $sliders = $repo->findBy(['page' => 'restaurant']);
 
@@ -94,8 +100,9 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('app/spa', name:'app_spa')]
-    public function spa(sliderRepository $repo) {
+    #[Route('app/spa', name: 'app_spa')]
+    public function spa(sliderRepository $repo)
+    {
 
         $sliders = $repo->findBy(['page' => 'spa']);
 
@@ -105,12 +112,25 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('app/avis', name:'app_avis')]
-    public function avis(EntityManagerInterface $manager, Request $request, CommentRepository $repo, sliderRepository $slideRepo) {
+    #[Route('app/hotel', name: 'app_hotel')]
+    public function hotel(sliderRepository $repo): Response
+    {
+        $hotel = $repo->findAll();
+        $sliders = $repo->findBy(['page' => 'hotel']);
+
+        return $this->render('app/hotel.html.twig', [
+            'hotel' => $hotel,
+            'slider' => $sliders,
+        ]);
+    }
+
+    #[Route('app/avis', name: 'app_avis')]
+    public function avis(EntityManagerInterface $manager, Request $request, CommentRepository $repo, sliderRepository $slideRepo)
+    {
         $sliders = $slideRepo->findBy(['page' => 'avis']);
         $categorie = $request->query->get('categorie');
         $comments = [];
-    
+
         switch ($categorie) {
             case 'chambre':
                 $comments = $repo->findBy(['categorie' => 'chambre'], ['createdAt' => 'DESC']);
@@ -125,17 +145,17 @@ class AppController extends AbstractController
                 $comments = $repo->findBy([], ['createdAt' => 'DESC']);
                 break;
         }
-    
+
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
-    
-        if($form->isSubmitted() && $form->isValid()) {
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCreatedAt(new \DateTime);
             $manager->persist($comment);
             $manager->flush();
         }
-    
+
         return $this->render('app/avis.html.twig', [
             'commentForm' => $form->createView(),
             'comment' => $comment,
@@ -145,11 +165,29 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('app/contact', name:'contact')]
-    public function contact() {
+    #[Route('app/contact', name: 'contact')]
+    public function contact(Request $request, EntityManagerInterface $manager, SliderRepository $slideRepo)
+    {
+        $sliders = $slideRepo->findBy(['page' => 'contact']);
+        $contact = new Contact;
 
-        return $this->render('app/contact.html.twig');
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($contact);
+            $manager->flush();
+
+            $this->addFlash('success', 'Votre message a été bien enregistré');
+
+            return $this->redirectToRoute('contact');
+        }
+
+
+
+        return $this->render('app/contact.html.twig', [
+            'contactForm' => $form->createView(),
+            'slider' => $sliders
+        ]);
     }
-    
-    
 }

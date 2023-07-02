@@ -1,38 +1,249 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Restaurant
-{% endblock %}
-
-{% block body %}
-	<body>
-		<section class="services">
-			<h2 id="services">Le Spa</h2>
-			<div class="cards">
-				<div class="card">
-					<img src="{{asset('assets/img/spa.jpg')}}" alt="chambres" class="mb-3"/>
-					<div style="height: 200px; color: #fff">
-						<h3 class="text-center text-dark">Soin Détente</h3>
-						<p>
-							Un voyage sensoriel vers la plénitude où chaque instant est une caresse pour le corps et l'esprit
-						</p>
-					</div>
-				</div>
-				<div class="card">
-					<img src="{{asset('assets/img/spa2.jpg')}}" alt="chambres" class="mb-3"/>
-					<h3 class="text-center text-dark">Soin Relaxant</h3>
-					<p>
-						Plongez dans un oasis de calme et laissez-vous envelopper par des soins relaxants d'une douceur exquise
-					</p>
-				</div>
-				<div class="card">
-					<img src="{{asset('assets/img/spa1.jpg')}}" alt="chambres" class="mb-3"/>
-					<h3 class="text-center text-dark">Soin Plaisir</h3>
-					<p>
-						Découvrez une expérience sensorielle envoûtante où le plaisir des soins se mêle à la douceur de l'évasion
-					</p>
-				</div>
-			</div>
-		</section>
-		<footer></footer>
-	</body>
+{% extends 'base.html.twig' %} {% block title %}Spa {% endblock %} {% block body
+%}
+<body>
+  <section class="services">
+    <div id="services" class="cards">
+      <div class="card">
+        <img
+          src="{{ asset('assets/img/spa1.jpg') }}"
+          alt="chambres"
+          class="mb-3"
+        />
+        <div style="height: 200px; text-align: center">
+          <h3 class="text-center">Soin Détente</h3>
+          <p>
+            Un voyage sensoriel vers la plénitude où chaque instant est une
+            caresse pour le corps et l'esprit
+          </p>
+        </div>
+        <button
+          type="button"
+          class="button2 text-black"
+          data-bs-toggle="modal"
+          data-bs-target="#carteDetenteModal"
+        >
+          Découvrez nos soins
+        </button>
+      </div>
+      <div class="card">
+        <img
+          src="{{ asset('assets/img/spa.jpg') }}"
+          alt="chambres"
+          class="mb-3"
+        />
+        <div style="height: 200px; text-align: center">
+          <h3>Soin Relaxant</h3>
+          <p>
+            Plongez dans un oasis de calme et laissez-vous envelopper par des
+            soins relaxants d'une douceur exquise
+          </p>
+        </div>
+        <button
+          type="button"
+          class="button2 text-black"
+          data-bs-toggle="modal"
+          data-bs-target="#carteDetenteModal"
+        >
+          Découvrez nos soins
+        </button>
+      </div>
+      <div class="card">
+        <img
+          src="{{ asset('assets/img/spa3.jpg') }}"
+          alt="chambres"
+          class="mb-3"
+        />
+        <div style="height: 200px; text-align: center">
+          <h3>Soin Plaisir</h3>
+          <p>
+            Découvrez une expérience sensorielle envoûtante où le plaisir des
+            soins se mêle à la douceur de l'évasion
+          </p>
+        </div>
+        <button
+          type="button"
+          class="button2 text-black"
+          data-bs-toggle="modal"
+          data-bs-target="#carteDetenteModal"
+        >
+          Découvrez nos soins
+        </button>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="carteDetenteModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="carteDetenteModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-warning text-white">
+            <h5 class="modal-title" id="carteDetenteModalLabel">
+              Soins Détente
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <ul class="list-unstyled">
+                <li>Massage relaxant aux huiles essentielles</li>
+                <hr />
+                <li>Soin du visage hydratant et apaisant</li>
+                <hr />
+                <li>Enveloppement corporel à la boue marine</li>
+                <hr />
+                <li>Bain aromatique aux huiles essentielles</li>
+                <hr />
+                <li>Gommage du corps aux sels marins</li>
+                <hr />
+                <li>
+                  Massage aux pierres chaudes pour une relaxation profonde
+                </li>
+                <hr />
+                <li>Rituel de détente avec hammam et gommage au savon noir</li>
+                <hr />
+                <li>Soin des pieds et des mains avec massage relaxant</li>
+                <hr />
+                <li>
+                  Séance de yoga et méditation pour une harmonie intérieure
+                </li>
+                <hr />
+                <li>
+                  Massage du cuir chevelu pour soulager le stress et les
+                  tensions
+                </li>
+                <hr />
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="carteRelaxantModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="carteRelaxantModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-warning text-white">
+            <h5 class="modal-title" id="carteRelaxantModalLabel">
+              Soins Relaxant
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <ul class="list-unstyled">
+                <li>Massage relaxant aux huiles essentielles</li>
+                <hr />
+                <li>Soin du visage hydratant et apaisant</li>
+                <hr />
+                <li>Enveloppement corporel à la boue marine</li>
+                <hr />
+                <li>Bain aromatique aux huiles essentielles</li>
+                <hr />
+                <li>Gommage du corps aux sels marins</li>
+                <hr />
+                <li>
+                  Massage aux pierres chaudes pour une relaxation profonde
+                </li>
+                <hr />
+                <li>Rituel de détente avec hammam et gommage au savon noir</li>
+                <hr />
+                <li>Soin des pieds et des mains avec massage relaxant</li>
+                <hr />
+                <li>
+                  Séance de yoga et méditation pour une harmonie intérieure
+                </li>
+                <hr />
+                <li>
+                  Massage du cuir chevelu pour soulager le stress et les
+                  tensions
+                </li>
+                <hr />
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="cartePlaisirModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="cartePlaisirModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-warning text-white">
+            <h5 class="modal-title" id="cartePlaisirModalLabel">
+              Soins Plaisir
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <ul class="list-unstyled">
+                <li>Massage suédois pour une détente musculaire</li>
+                <hr />
+                <li>Soins du visage anti-âge pour une peau éclatante</li>
+                <hr />
+                <li>
+                  Gommage corporel aux cristaux de sel et huiles essentielles
+                </li>
+                <hr />
+                <li>
+                  Massage aux bougies parfumées pour une expérience sensorielle
+                </li>
+                <hr />
+                <li>Soins des mains et des pieds avec pose de vernis</li>
+                <hr />
+                <li>Enveloppement corporel au chocolat pour une peau douce</li>
+                <hr />
+                <li>Rituel de relaxation avec sauna et jacuzzi</li>
+                <hr />
+                <li>Massage du dos aux pierres chaudes</li>
+                <hr />
+                <li>
+                  Soins capillaires nourrissants pour des cheveux brillants
+                </li>
+                <hr />
+                <li>Massage aux huiles chaudes pour une relaxation profonde</li>
+                <hr />
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer></footer>
+</body>
 {% endblock %}

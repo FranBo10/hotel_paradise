@@ -4,43 +4,42 @@
 {% endblock %}
 {% block header %}{% endblock %}
 {% block body %}
-	<body>
+<body>
 		<section class="services">
-			<h2 id="services">Le Restaurant</h2>
-			<div class="cards">
+			<div id="services" class="cards">
 				<div class="card">
 					<img src="{{asset('assets/img/resto1.jpg')}}" alt="chambres" class="mb-3"/>
-					<div style="height: 200px; color: #fff">
-						<h3 class="text-center text-white">Carte Petit-déjeuner</h3>
+					<div style="height: 200px; text-align: center;">
+						<h3>Carte Petit-déjeuner</h3>
 						<p>
 							Le paradis des amateurs de viandes : savourez les meilleurs morceaux dans notre restaurant brasserie exquis !
 						</p>
 					</div>
-					<button type="button" class="btn btn-warning text-black" data-bs-toggle="modal" data-bs-target="#cartePetitDejModal">
+					<button type="button" class="button2 text-black" data-bs-toggle="modal" data-bs-target="#cartePetitDejModal">
 						Découvrez la carte
 					</button>
 				</div>
 				<div class="card">
 					<img src="{{asset('assets/img/resto2.jpg')}}" alt="chambres" class="mb-3"/>
-					<div style="height: 200px; color: #fff">
-						<h3 class="text-center text-white">Carte Dégustation</h3>
+					<div style="height: 200px; text-align: center;">
+						<h3>Carte Dégustation</h3>
 						<p>
 							Découvrez une symphonie de saveurs avec notre menu dégustation, une expérience culinaire aux multiples délices
 						</p>
 					</div>
-					<button type="button" class="btn btn-warning text-black" data-bs-toggle="modal" data-bs-target="#carteDegustationModal">
+					<button type="button" class="button2 text-black" data-bs-toggle="modal" data-bs-target="#carteDegustationModal">
 						Découvrez la carte
 					</button>
 				</div>
 				<div class="card">
 					<img src="{{asset('assets/img/resto.jpg')}}" alt="chambres" class="mb-3"/>
-					<div style="height: 200px; color: #fff">
-						<h3 class="text-center text-white">Carte Restaurant</h3>
+					<div style="height: 200px; text-align: center;">
+						<h3>Carte Restaurant</h3>
 						<p>
 							Nos plats sont confectionnés à la minute par notre chef cuisinier chaque jour
 						</p>
 					</div>
-					<button type="button" class="btn btn-warning text-black" data-bs-toggle="modal" data-bs-target="#carteRestaurantModal">
+					<button type="button" class="button2 text-black" data-bs-toggle="modal" data-bs-target="#carteRestaurantModal">
 						Découvrez la carte
 					</button>
 				</div>
@@ -49,7 +48,7 @@
 			<div class="modal fade" id="cartePetitDejModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cartePetitDejModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-scrollable">
 					<div class="modal-content">
-						<div class="modal-header bg-warning text-white">
+						<div class="modal-header bg-warning text-dark">
 							<h5 class="modal-title" id="cartePetitDejModalLabel">Carte Petit-Déjeuner</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
@@ -84,7 +83,7 @@
 			<div class="modal fade" id="carteDegustationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carteDegustationModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-scrollable">
 					<div class="modal-content">
-						<div class="modal-header bg-warning text-white">
+						<div class="modal-header bg-warning text-dark">
 							<h5 class="modal-title" id="carteDegustationModalLabel">Carte Degustation</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
@@ -119,7 +118,7 @@
 			<div class="modal fade" id="carteRestaurantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carteRestaurantModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-scrollable">
 					<div class="modal-content">
-						<div class="modal-header bg-warning text-white">
+						<div class="modal-header bg-warning text-dark">
 							<h5 class="modal-title" id="carteRestaurantModalLabel">Carte Restaurant</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>

@@ -17,25 +17,18 @@ class CommandeType extends AbstractType
         $builder
             ->add('date_arrivee', DateType::class, [
                 'label' => 'Date d\'arrivée',
-                'label_attr' => ['class' => 'text-white bg-info p-1 rounded'],
                 'widget' => 'single_text',
             ])
             ->add('date_depart', DateType::class, [
                 'label' => 'Date de départ',
-                'label_attr' => ['class' => 'text-white bg-info p-1 rounded'],
                 'widget' => 'single_text',
             ])
-            ->add('prenom', TextType::class, ['label' => 'Prénom',
-                'label_attr' => ['class' => 'text-white bg-info p-1 rounded']])
-            ->add('nom', TextType::class, ['label' => 'Nom',
-                'label_attr' => ['class' => 'text-white bg-info p-1 rounded']])
-            ->add('telephone', TextType::class, ['label' => 'Téléphone',
-                'label_attr' => ['class' => 'text-white bg-info p-1 rounded']])
-            ->add('email', EmailType::class, ['label' => 'E-Mail',
-                'label_attr' => ['class' => 'text-white bg-info p-1 rounded']])
-        ;
+            ->add('prenom', TextType::class, ['label' => 'Prénom'])
+            ->add('nom', TextType::class, ['label' => 'Nom'])
+            ->add('telephone', TextType::class, ['label' => 'Téléphone'])
+            ->add('email', EmailType::class, ['label' => 'E-Mail',]);
     }
-    
+
 
     public function configureOptions(OptionsResolver $resolver): void
     {

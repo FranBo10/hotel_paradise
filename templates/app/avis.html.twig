@@ -3,53 +3,57 @@
 {% block title %}Avis
 {% endblock %}
 {% block body %}
-	<section class="services">
-		<h2 class="text-center">On est heureux de vous montrer les opinions de nos clients</h2>
+	<div class="services">
+		<div class="title">
+			<h2 id="services" class="text-center">On est heureux de vous montrer les opinions de nos clients</h2>
+		</div>
 		<div class="container">
-			<h2>
-				<span class="text-warning">9.3</span>
-				<span class="text-sm">/10</span>
-			</h2>
-			<div class="flex mx-auto">
-				<div class="flex-column">
-					<h3>Excelente</h3>
-					<p>Basé sur 58 renseignements</p>
+			<div class="d-flex justify-content-between p-3">
+				<div class="flex-column col-4">
+					<h2>
+						<span class="text-warning">9.3</span>
+						<span class="text-sm">/10</span>
+					</h2>
+					<div class="flex mx-auto">
+						<div class="flex-column text-center">
+							<h3>Excellente</h3>		
+							<p>Basé sur 58 renseignements</p>
+						</div>
+					</div>
 				</div>
 				<div class="about skills">
 					<div class="box">
-						<h4>Nettoyage</h4>
-						<div class="percent">
-							<div class="progress" style="width: 90%"></div>
+							<h4>Nettoyage</h4>
+							<div class="percent">
+								<div class="progress" style="width: 90%"></div>
+							</div>
 						</div>
-					</div>
-					<div class="box">
-						<h4>Attention personnel</h4>
-						<div class="percent">
-							<div class="progress" style="width: 80%"></div>
+						<div class="box">
+							<h4>Attention personnel</h4>
+							<div class="percent">
+								<div class="progress" style="width: 80%"></div>
+							</div>
 						</div>
-					</div>
-					<div class="box">
-						<h4>Confort des chambres</h4>
-						<div class="percent">
-							<div class="progress" style="width: 70%"></div>
+						<div class="box">
+							<h4>Confort des chambres</h4>
+							<div class="percent">
+								<div class="progress" style="width: 70%"></div>
+							</div>
 						</div>
-					</div>
-					<div class="box">
-						<h4>Localisation</h4>
-						<div class="percent">
-							<div class="progress" style="width: 60%"></div>
+						<div class="box">
+							<h4>Localisation</h4>
+							<div class="percent">
+								<div class="progress" style="width: 60%"></div>
+							</div>
 						</div>
-					</div>
-					<div class="box">
-						<h4>Instalations de l'hôtel</h4>
-						<div class="percent">
-							<div class="progress" style="width: 70%"></div>
+						<div class="box">
+							<h4>Instalations de l'hôtel</h4>
+							<div class="percent">
+								<div class="progress" style="width: 70%"></div>
+							</div>
 						</div>
-					</div>
 				</div>
 			</div>
-
-
 		</div>
 		<div class="container my-3">
 			{{ form_start(commentForm) }}
@@ -73,7 +77,7 @@
                 }
             }) }}
 
-			<button type='submit' class="btn btn-warning text-black">Envoyer le commentaire</button>
+			<button type='submit' class="button text-black">Envoyer le commentaire</button>
 
 			{{ form_end(commentForm) }}
 		</div>
@@ -90,7 +94,7 @@
 						<option value="restaurant" {% if selectedCategorie == 'restaurant' %} selected {% endif %}>Restaurant</option>
 						<option value="spa" {% if selectedCategorie == 'spa' %} selected {% endif %}>Spa</option>
 					</select>
-					<button type="submit" class="btn btn-warning text-black mt-2">Filtrer</button>
+					<button type="submit" class="button text-black mt-2">Filtrer</button>
 				</div>
 			</form>
 			<section>
@@ -120,5 +124,5 @@
 
 			</section>
 		</div>
-	</section>
+	</div>
 {% endblock %}
