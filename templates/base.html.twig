@@ -76,6 +76,7 @@
             </ul>
           </div>
         </div>
+        <a href="{{ path('app_register') }}" class="button me-3">Inscription</a>
         <div class="flags">
           <img src="{{ asset('assets/img/france.png') }}" alt="fr" />
           <img src="{{ asset('assets/img/united-kingdom.png') }}" alt="en" />
@@ -145,6 +146,9 @@
               {% elseif slide.page == "Hotel" %}
               <h1>Decouvrez notre hotel !!!</h1>
               <a href="#services" class="button">Bienvenue au voyage !</a>
+              {% elseif slide.page == "Inscription" %}
+              <h1>Faitez parti de l'universe paradise</h1>
+              <a href="#services" class="button">Inscrivez-vous !</a>
               {% endif %}
             </div>
           </div>
@@ -266,6 +270,10 @@
                   'label_attr': {
                       'class': 'text-dark',
                       'style': 'text-align: left;'    
+
+
+
+
 
 
 

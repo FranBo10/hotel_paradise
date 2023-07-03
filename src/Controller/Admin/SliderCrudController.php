@@ -41,6 +41,7 @@ class SliderCrudController extends AbstractCrudController
                 'accueil' => 'Accueil',
                 'contact' => 'Contact',
                 'hotel' => 'Hotel',
+                'inscription' => 'Inscription'
             ]),
 
             DateTimeField::new('date_enregistrement', 'Date d\'enregistrement')->setFormat('d/M/Y - H:m')->hideOnForm(),
